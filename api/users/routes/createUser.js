@@ -31,8 +31,6 @@ module.exports = {
       user.username = req.payload.username
       user.admin = false
 
-      console.log(req.payload)
-
       hashPassword(req.payload.password, (err, hash) => {
         if (err) {
           throw Boom.badRequest(err)

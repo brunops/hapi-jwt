@@ -11,13 +11,35 @@ $ mongo --dbpath ./data/db
 $ node index.js
 ```
 
-# Post to API
+# API
+
+### POST `/users` - create user
 
 ```
 $ curl \
   -x POST \
   -H 'Content-Type: application/json' \
-  -d '{ "username": "user", "email": "user@example.com", "password": "abcdefgh1" }'
+  -d '{ "username": "user", "email": "user@example.com", "password": "abcdefgh1" }' \
+  http://localhost:3000/users
+```
+
+### GET `/users` - list all users, only accessible by admins
+
+```
+$ curl \
+  -x GET \
+  -H 'Authorization: Bearer JWT_HERE' \
+  http://localhost:3000/users
+```
+
+### POST `/users/authenticate` - authenticate user, wow
+
+```
+$ curl \
+  -x POST \
+  -H 'Content-Type: application/json' \
+  -d '{ "username": "rick", "password": "wubalubadubdub" }' \
+  http://localhost:3000/users/authenticate
 ```
 
 # License
